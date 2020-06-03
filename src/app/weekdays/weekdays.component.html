@@ -1,0 +1,12 @@
+<ul *ngFor="let day Of weekdays">
+    <li [ngSwitch]="day">
+        <p *ngSwitchCase=1>Sunday</p>
+        <p *ngSwitchCase=2>Monday</p>
+        <p *ngSwitchCase=3>Tuesday</p>
+        <p *ngSwitchCase=4>Wednesday</p>
+        <p *ngSwitchCase=5>Thursday</p>
+        <p *ngSwitchCase=6>Friday</p>
+        <p *ngSwitchCase=7>Saturday</p>
+    </li>
+
+</ul>

@@ -1,0 +1,177 @@
+<div class="container">
+    <h2>Working With Components</h2>
+    <div class="row">
+        <div class="col-xs-12">
+            <ol>
+                <li>Create a new Component WarningAlert manually </li>
+                <li>Create a new Component SuccessAlert with CLI </li>
+                <li>Output them beneath each other in the AppComponent</li>
+                <li>Output a warning or success message in the Components</li>
+                <li>Style the Components appropriately (maybe some red/ green text?)</li>
+            </ol>
+            <p>Use external or internal templates and styles!</p>
+            <p>Feel free to create more components, nest them into each other or play around with different types of selectors!</p>
+            <h6>Answers Below</h6>
+            <p app-warning-alert>
+            </p>
+            <app-successalert></app-successalert>
+        </div>
+    </div>
+    <br>
+    <hr>
+
+    <div class="row">
+        <h3>DataBinding - Interpolation String</h3>
+        <div class="col-xs-12">
+            <h4>Name : {{firstName +' '+ lastName}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <h3>DataBinding - property binding</h3>
+        <div class="col-xs-12">
+            <button class='btn btn-success' [disabled]='!isActive'>DisabledWithPropertyBinding</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <h3>DataBinding - TwoWayBinding</h3>
+        <div class="col-xs-12">
+
+            UserName: <input class='form-field' type='text' [(ngModel)]='userName'><br><br> PassWord: <input class='form-field' type='password' [(ngModel)]='passWord'>
+            <br><br>
+            <p>UserName : {{userName}}</p>
+            <p>PassWord : {{passWord}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <h3>DataBinding - EventBindig</h3>
+        <div class="col-xs-12">
+
+            UserName: <input class='form-field' type='text' [(ngModel)]='userName'><br><br> PassWord: <input class='form-field' type='password' [(ngModel)]='passWord'>
+            <br><br>
+            <button class='btn btn-primary' (click)='changeDisplyDetails()'>Show/Hide Using Event Binding</button>
+            <div [hidden]='!displayDetails'>
+                <p>UserName : {{userName}}</p>
+                <p>PassWord : {{passWord}}</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <h3>Using ngif to display odd and even numbers</h3>
+        <div class="col-xs-12">
+            <button class='btn btn-primary' (click)='displayEvenList()'>ClickToDispalyEvenNumbers</button> &nbsp; <button class='btn btn-primary' (click)='displayOddList()'>ClickToDispalyOddNumbers</button>
+            <div *ngIf="evenlist">
+                <ul>
+                    <li>2</li>
+                    <li>4</li>
+                    <li>6</li>
+                    <li>8</li>
+                    <li>10</li>
+                </ul>
+            </div>
+
+            <div *ngIf="oddlist">
+                <ul>
+                    <li>1</li>
+                    <li>3</li>
+                    <li>5</li>
+                    <li>7</li>
+                    <li>9</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <h3>Using ngif else to display odd and even numbers</h3>
+        <div class="col-xs-12">
+            <button class='btn btn-primary' (click)='displayEvenList2()'>ClickToDispalyEvenNumbers</button> &nbsp; <button class='btn btn-primary' (click)='displayOddList2()'>ClickToDispalyOddNumbers</button>
+
+            <div *ngIf="evenlist2; then evenNumbers; else oddNummbers"></div>
+
+            <ng-template #evenNumbers>
+                <ul>
+                    <li>2</li>
+                    <li>4</li>
+                    <li>6</li>
+                    <li>8</li>
+                    <li>10</li>
+                </ul>
+            </ng-template>
+
+            <ng-template #oddNummbers>
+                <ul>
+                    <li>1</li>
+                    <li>3</li>
+                    <li>5</li>
+                    <li>7</li>
+                    <li>9</li>
+                </ul>
+            </ng-template>
+
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <h3>Using ngStyle and ngClass</h3>
+        <div class="col-xs-12">
+            <div [style.color]="'orange'">style using property syntax</div>
+            <div [className]="'blue'">css class using property syntax</div>
+
+            <br /><br />
+
+            <input [(ngModel)]="color" />
+            <button (click)="size = size + 1">+</button>
+            <button (click)="size = size - 1">-</button>
+
+            <div [ngStyle]="{'color': color, 'font-size': size + 'px'}">
+                style using ngStyle
+            </div>
+
+            <br />
+
+            <div [ngClass]="['bold-text', 'green']">array of classes</div>
+            <div [ngClass]="'italic-text blue'">string of classes</div>
+            <div [ngClass]="{'small-text': (size==17), 'red': true}">object/map of classes</div>
+
+            <br />
+
+            <span [style.color]="'blue'" [ngClass]="this.visible ? 'show-class' : 'hide-class'">toggled with ngClass with property binding</span>&nbsp;
+            <button class="tog" (click)="toggle()">Toggle</button>
+
+
+
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <h3>Using ngFor</h3>
+        <div class="col-xs-12">
+            <app-users></app-users>
+        </div>
+    </div>
+
+    <hr>
+    <div class="row">
+        <h3>Using ngSwitch</h3>
+        <div class="col-xs-12">
+            <app-weekdays></app-weekdays>
+        </div>
+    </div>
+
+    <hr>
+    <div class="row">
+        <h3>MultipleModules</h3>
+        <div class="col-xs-12">
+            <app-india></app-india>
+            <app-usa></app-usa>
+        </div>
+    </div>
+
+</div>
